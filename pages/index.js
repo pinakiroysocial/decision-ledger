@@ -297,7 +297,11 @@ export default function Home() {
       await loginAnonymously();
     } catch (err) {
       console.error("Guest login error:", err);
-      setLoginError(err.message || "Failed to initiate guest evaluation session. Please use Google Sign-In.");
+      setLoginError(
+        err.message?.includes("admin-restricted") || err.message?.includes("not-allowed")
+          ? "Anonymous authentication is not enabled in Firebase Console. Please enable 'Anonymous' in Firebase Console > Authentication > Sign-in method, or sign in with Google."
+          : (err.message || "Failed to initiate guest evaluation session. Please use Google Sign-In.")
+      );
     } finally {
       setLoginLoading(false);
     }
