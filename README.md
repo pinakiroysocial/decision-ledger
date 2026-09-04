@@ -1,16 +1,23 @@
-# Decision Ledger — Cloud-Native Decision Repository
+<div align="center">
+
+<img src="public/img/logo.png" alt="Decision Ledger Logo" width="128" height="128" />
+
+# Decision Ledger
+### Intelligent Architectural Decision Repository
 
 > **Live Production Application:** 🌐 [https://roy-decisionledger.vercel.app/](https://roy-decisionledger.vercel.app/)  
 > **Architect & Lead Developer:** [Pinaki Roy](https://www.linkedin.com/in/pinakiroysocial/)  
 > **Platform Status:** Operational & Live in Production  
 > **UI Aesthetic:** Authentic Windows 95 Full-Screen Workstation  
-> **Cloud Architecture:** Next.js 14 • Vercel Edge Platform • Cloud Firestore Native • Gemini 3.5 Flash
+> **Core Architecture:** Next.js 14 • Vercel Edge Platform • Firebase Firestore • Gemini 3.5 Flash
+
+</div>
 
 ---
 
 ## Executive Overview
 
-**Decision Ledger** is a cloud-native architectural repository designed for engineering organizations, software architects, and tech leads. It turns unstructured engineering notes into durable, structured Architectural Decision Records (ADRs) with automated rationale extraction and conversational AI synthesis powered by **Google Gemini 3.5 Flash**.
+**Decision Ledger** is an architectural decision repository designed for engineering organizations, software architects, and tech leads. It turns unstructured engineering notes into durable, structured Architectural Decision Records (ADRs) with automated rationale extraction and conversational AI synthesis powered by **Google Gemini 3.5 Flash**.
 
 Wrapped in a pixel-perfect, authentic **Windows 95 workstation dashboard**, the platform combines high-density desktop ergonomics with modern enterprise security, multi-tenant privacy, and serverless scalability.
 
@@ -29,7 +36,7 @@ Wrapped in a pixel-perfect, authentic **Windows 95 workstation dashboard**, the 
 
 ### 2. Conversational Rationale Engine ("Ask Why")
 - Instant semantic reasoning over past architectural decisions.
-- Answers questions like *"Why did we choose PostgreSQL over MongoDB?"* or *"What was the rationale for Cloud Run autoscaling?"* by grounding answers strictly in stored decision documents.
+- Answers questions like *"Why did we choose PostgreSQL over MongoDB?"* or *"What was the rationale for Vercel Edge deployment?"* by grounding answers strictly in stored decision documents.
 
 ### 3. Ledger Explorer & Multi-Tenant Management
 - High-density table view with instant real-time client filtering by title, chosen option, and keyword tags.
@@ -48,9 +55,9 @@ Wrapped in a pixel-perfect, authentic **Windows 95 workstation dashboard**, the 
 |---|---|
 | **Live Production** | 🌐 [https://roy-decisionledger.vercel.app/](https://roy-decisionledger.vercel.app/) |
 | **Lead Architect** | [Pinaki Roy (LinkedIn)](https://www.linkedin.com/in/pinakiroysocial/) |
-| **Frontend & Server** | Next.js 14 (App & Pages architecture, Standalone Docker container) |
-| **Cloud Hosting** | Vercel Global Edge Network (with Cloud Run container support) |
-| **Database** | Google Cloud Firestore (Native mode) with server-side Admin SDK verification |
+| **Frontend & API** | Next.js 14 (Pages & API routes) |
+| **Hosting & Edge** | Vercel Global Edge Network |
+| **Database** | Firebase Firestore with server-side Admin SDK verification |
 | **AI Synthesis** | Google Gemini 3.5 Flash with fallback resilience |
 | **Authentication** | Firebase Authentication (Google OAuth 2.0 & Anonymous Guest Sessions) |
 | **Authorization** | Strict per-user UID isolation (`ownerUid`) across all CRUD endpoints |

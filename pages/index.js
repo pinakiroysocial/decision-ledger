@@ -19,8 +19,8 @@ const QUICK_TEMPLATES = [
     key: "hosting",
     label: "Hosting",
     title: "Hosting Platform",
-    text: "We chose Google Cloud Run over Google Compute Engine VMs because Cloud Run provides automated scaling to zero, rapid container deployment from source, zero server maintenance, and built-in HTTPS endpoints.",
-    tags: "cloud-run, gcp, serverless, hosting",
+    text: "We chose Vercel over traditional virtual machines because Vercel provides instant edge deployments, automatic SSL certificates, zero server maintenance, and seamless Git-integrated continuous delivery.",
+    tags: "vercel, edge, serverless, hosting",
   },
   {
     key: "auth",
@@ -34,20 +34,20 @@ const QUICK_TEMPLATES = [
     label: "AI Model",
     title: "AI Model Selection",
     text: "We chose Gemini 3.5 Flash via Google Generative AI SDK over self-hosted LLMs because it provides ultra-low latency, native structured JSON output capability, and low inference cost for extracting decision metadata.",
-    tags: "gemini, ai, llm, google-cloud",
+    tags: "gemini, ai, llm, google",
   },
 ];
 
 const OTHER_TEMPLATES = [
   {
     title: "API Architecture",
-    text: "We chose REST APIs over GraphQL for our internal microservices because our access patterns are predictable, HTTP caching is trivial to implement on Cloud CDN, and tooling across our stack already supports OpenAPI specs.",
+    text: "We chose REST APIs over GraphQL for our internal microservices because our access patterns are predictable, HTTP caching is trivial to implement on modern CDNs, and tooling across our stack already supports OpenAPI specs.",
     tags: "api, rest, microservices, openapi",
   },
   {
     title: "CI/CD Pipeline",
-    text: "We adopted Google Cloud Build over GitHub Actions self-hosted runners because it integrates natively with Artifact Registry and Cloud Run without exporting long-lived GCP service account keys.",
-    tags: "cicd, cloud-build, devops, gcp",
+    text: "We adopted GitHub Actions and Vercel automated deployments over manual server deployments because it provides instant preview environments, automated build checks, and atomic production releases on git push.",
+    tags: "cicd, github-actions, vercel, devops",
   },
   {
     title: "State Management",
@@ -56,8 +56,8 @@ const OTHER_TEMPLATES = [
   },
   {
     title: "Logging & Telemetry",
-    text: "We opted for Google Cloud Logging with structured JSON stdout over a third-party APM because Cloud Run ingests stdout automatically with zero agent overhead.",
-    tags: "logging, observability, cloud-run, gcp",
+    text: "We opted for Vercel Analytics and structured serverless logs over third-party APM agents because it provides real-time latency insights with zero runtime footprint.",
+    tags: "logging, observability, vercel, analytics",
   },
 ];
 
@@ -533,7 +533,7 @@ export default function Home() {
                 Welcome to <strong>Decision Ledger</strong>! Sign in with your Google account or continue as Guest to access your personal cloud ledger, record architecture decisions, and query rationales with Gemini AI.
               </p>
               <div className="text-muted small">
-                <strong>Engine:</strong> Google Gemini 3.5 Flash | <strong>Cloud Host:</strong> Vercel / Cloud Run (us-central1)
+                <strong>Engine:</strong> Google Gemini 3.5 Flash | <strong>Host:</strong> Vercel Global Edge
               </div>
             </div>
 
@@ -567,7 +567,7 @@ export default function Home() {
 
           <div className="w95-statusbar">
             <div className="w95-status-pane flex-grow-1">Ready for logon</div>
-            <div className="w95-status-pane">Cloud Run: us-central1</div>
+            <div className="w95-status-pane">Host: Vercel Edge</div>
           </div>
         </div>
       </div>
@@ -582,7 +582,7 @@ export default function Home() {
       <div className="w95-title-bar">
         <div className="w95-title-text">
           <img src="/icons/app-d.png" alt="App" style={{ width: 20, height: 20, imageRendering: "pixelated" }} />
-          <span>Decision Ledger – Cloud-Native Decision Repository</span>
+          <span>Decision Ledger – Architectural Decision Repository</span>
         </div>
       </div>
 
@@ -696,9 +696,13 @@ export default function Home() {
                 <img src="/icons/dot-green.png" alt="" style={{ width: 10, height: 10 }} />
                 <span>Cloud Status & Region</span>
               </div>
-              <div className="w95-dropdown-item" onClick={() => { window.open("https://console.cloud.google.com/run?project=decision-ledger-5931d", "_blank"); setActiveMenuDropdown(null); }}>
+              <div className="w95-dropdown-item" onClick={() => { window.open("https://vercel.com/dashboard", "_blank"); setActiveMenuDropdown(null); }}>
                 <img src="/icons/cloud.png" alt="" style={{ width: 16, height: 16 }} />
-                <span>Google Cloud Console ↗</span>
+                <span>Vercel Dashboard ↗</span>
+              </div>
+              <div className="w95-dropdown-item" onClick={() => { window.open("https://console.firebase.google.com/project/decision-ledger-5931d/overview", "_blank"); setActiveMenuDropdown(null); }}>
+                <img src="/icons/folder.png" alt="" style={{ width: 16, height: 16 }} />
+                <span>Firebase Console ↗</span>
               </div>
             </div>
           )}
@@ -1027,7 +1031,7 @@ export default function Home() {
                         <input
                           type="text"
                           className="w95-input"
-                          placeholder="e.g. database, gcp, architecture, security"
+                          placeholder="e.g. database, cloud, architecture, security"
                           value={manualTags}
                           onChange={(e) => setManualTags(e.target.value)}
                         />
@@ -1216,7 +1220,7 @@ export default function Home() {
                       type="text"
                       className="w95-input"
                       style={{ padding: "8px 10px", fontSize: 13 }}
-                      placeholder="e.g. Why did we choose Google Cloud Run over GCE VMs?"
+                      placeholder="e.g. Why did we choose Vercel over traditional servers?"
                       value={question}
                       onChange={(e) => setQuestion(e.target.value)}
                     />
@@ -1525,13 +1529,13 @@ export default function Home() {
                             <th style={{ whiteSpace: "nowrap", verticalAlign: "top", paddingRight: "10px" }}>
                               Database:
                             </th>
-                            <td>Google Cloud Firestore (Native)</td>
+                            <td>Firebase Firestore (Cloud Native)</td>
                           </tr>
                           <tr>
                             <th style={{ whiteSpace: "nowrap", verticalAlign: "top", paddingRight: "10px" }}>
-                              Cloud Host:
+                              Hosting:
                             </th>
-                            <td>Google Cloud Run (us-central1)</td>
+                            <td>Vercel Global Edge Network</td>
                           </tr>
                           <tr>
                             <th style={{ whiteSpace: "nowrap", verticalAlign: "top", paddingRight: "10px" }}>
@@ -1838,10 +1842,10 @@ export default function Home() {
                   <div>
                     <h6 className="font-weight-bold text-primary mb-2">Security & Data Isolation</h6>
                     <p>
-                      <strong>Authentication:</strong> All client queries are authenticated via Firebase Google OAuth. Cloud Run endpoints verify ID tokens via Firebase Admin SDK.
+                      <strong>Authentication:</strong> All client queries are authenticated via Firebase Google OAuth. Vercel serverless endpoints verify ID tokens via Firebase Admin SDK.
                     </p>
                     <p>
-                      <strong>Storage:</strong> Decision records reside in Google Cloud Firestore with security rules protecting documents per workgroup.
+                      <strong>Storage:</strong> Decision records reside in Firebase Firestore with strict user UID isolation.
                     </p>
                   </div>
                 )}
@@ -1853,7 +1857,7 @@ export default function Home() {
                       <strong>Developer:</strong> Pinaki Roy (<a href="https://www.linkedin.com/in/pinakiroysocial/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>)
                     </p>
                     <p>
-                      <strong>Stack:</strong> Next.js 14, Docker, Google Cloud Run, Google Generative AI (Gemini 3.5 Flash), Firebase Authentication, Cloud Firestore, Windows 95 UI Kit.
+                      <strong>Stack:</strong> Next.js 14, Vercel Edge Platform, Google Generative AI (Gemini 3.5 Flash), Firebase Authentication & Firestore, Windows 95 UI Kit.
                     </p>
                   </div>
                 )}
@@ -2093,12 +2097,12 @@ export default function Home() {
                 <table className="table table-sm table-borderless small mb-0" style={{ fontSize: 13 }}>
                   <tbody>
                     <tr>
-                      <th style={{ width: 130 }}>GCP Project:</th>
+                      <th style={{ width: 130 }}>Firebase Project:</th>
                       <td>decision-ledger-5931d</td>
                     </tr>
                     <tr>
-                      <th>Region:</th>
-                      <td>us-central1</td>
+                      <th>Hosting Platform:</th>
+                      <td>Vercel Global Edge</td>
                     </tr>
                     <tr>
                       <th>AI Model:</th>
