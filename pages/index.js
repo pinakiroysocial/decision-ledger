@@ -942,7 +942,7 @@ export default function Home() {
               />
               <div style={{ fontSize: 12 }}>
                 <div className="text-muted" style={{ fontSize: 11 }}>Signed in as</div>
-                <div className="font-weight-bold">{user?.email || "Guest Evaluator"}</div>
+                <div className="font-weight-bold" style={{ wordBreak: "break-word", maxWidth: 140 }}>{user?.email || "Guest Evaluator"}</div>
               </div>
               <button className="w95-btn w95-btn-sm ml-2" onClick={logout}>
                 Log Out
@@ -1119,27 +1119,27 @@ export default function Home() {
                           <span>✓</span>
                           <span>Decision successfully recorded to Firestore!</span>
                         </div>
-                        <table className="table table-sm table-borderless small mb-0" style={{ fontSize: 13 }}>
+                        <table className="table table-sm table-borderless small mb-0 w95-table-fixed" style={{ width: "100%", tableLayout: "fixed", fontSize: 13 }}>
                           <tbody>
                             <tr>
-                              <th style={{ width: 140 }}>Title:</th>
-                              <td className="font-weight-bold">{logResult.title}</td>
+                              <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Title:</th>
+                              <td className="font-weight-bold" style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>{logResult.title}</td>
                             </tr>
                             <tr>
-                              <th>Chosen Option:</th>
-                              <td>{logResult.chosen_option}</td>
+                              <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Chosen Option:</th>
+                              <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>{logResult.chosen_option}</td>
                             </tr>
                             <tr>
-                              <th>Options Considered:</th>
-                              <td>{logResult.options_considered ? logResult.options_considered.join(", ") : "N/A"}</td>
+                              <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Options Considered:</th>
+                              <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>{logResult.options_considered ? logResult.options_considered.join(", ") : "N/A"}</td>
                             </tr>
                             <tr>
-                              <th>Reasoning:</th>
-                              <td>{logResult.reasoning}</td>
+                              <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Reasoning:</th>
+                              <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>{logResult.reasoning}</td>
                             </tr>
                             <tr>
-                              <th>Tags:</th>
-                              <td>
+                              <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Tags:</th>
+                              <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>
                                 {logResult.tags && logResult.tags.map((t, idx) => (
                                   <span key={idx} className="w95-tag mr-1">#{t}</span>
                                 ))}
@@ -1460,23 +1460,23 @@ export default function Home() {
                       <span className="small text-muted">Document ID: <code>{selectedDecision.id}</code></span>
                       <button className="w95-btn w95-btn-sm" onClick={() => setSelectedDecision(null)}>Close Preview</button>
                     </div>
-                    <table className="table table-sm table-borderless small mb-0" style={{ fontSize: 13 }}>
+                    <table className="table table-sm table-borderless small mb-0 w95-table-fixed" style={{ width: "100%", tableLayout: "fixed", fontSize: 13 }}>
                       <tbody>
                         <tr>
-                          <th style={{ width: 140 }}>Chosen Option:</th>
-                          <td className="font-weight-bold">{selectedDecision.chosen_option}</td>
+                          <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Chosen Option:</th>
+                          <td className="font-weight-bold" style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>{selectedDecision.chosen_option}</td>
                         </tr>
                         <tr>
-                          <th>Considered:</th>
-                          <td>{selectedDecision.options_considered ? selectedDecision.options_considered.join(", ") : "N/A"}</td>
+                          <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Considered:</th>
+                          <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>{selectedDecision.options_considered ? selectedDecision.options_considered.join(", ") : "N/A"}</td>
                         </tr>
                         <tr>
-                          <th>Reasoning:</th>
-                          <td>{selectedDecision.reasoning}</td>
+                          <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Reasoning:</th>
+                          <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>{selectedDecision.reasoning}</td>
                         </tr>
                         <tr>
-                          <th>Tags:</th>
-                          <td>
+                          <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Tags:</th>
+                          <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>
                             {selectedDecision.tags && selectedDecision.tags.map((t, idx) => (
                               <span key={idx} className="w95-tag mr-1">#{t}</span>
                             ))}
@@ -1534,57 +1534,57 @@ export default function Home() {
                   <div className="col-md-7 mb-3">
                     <fieldset className="w95-fieldset h-100 p-3">
                       <legend className="w95-legend">System Specifications</legend>
-                      <table className="table table-sm table-borderless small mb-0" style={{ width: "100%", fontSize: 13 }}>
+                      <table className="table table-sm table-borderless small mb-0 w95-table-fixed" style={{ width: "100%", tableLayout: "fixed", fontSize: 13 }}>
                         <tbody>
                           <tr>
-                            <th style={{ whiteSpace: "nowrap", width: "130px", verticalAlign: "top", paddingRight: "10px" }}>
+                            <th style={{ whiteSpace: "nowrap", width: "140px", verticalAlign: "top", paddingRight: "10px" }}>
                               Project ID:
                             </th>
-                            <td style={{ wordBreak: "break-word" }}>
+                            <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>
                               decision-ledger-5931d
                             </td>
                           </tr>
                           <tr>
-                            <th style={{ whiteSpace: "nowrap", verticalAlign: "top", paddingRight: "10px" }}>
+                            <th style={{ whiteSpace: "nowrap", width: "140px", verticalAlign: "top", paddingRight: "10px" }}>
                               Framework:
                             </th>
-                            <td>Next.js 14 (Standalone Docker)</td>
+                            <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>Next.js 14 (Standalone Docker)</td>
                           </tr>
                           <tr>
-                            <th style={{ whiteSpace: "nowrap", verticalAlign: "top", paddingRight: "10px" }}>
+                            <th style={{ whiteSpace: "nowrap", width: "140px", verticalAlign: "top", paddingRight: "10px" }}>
                               Theme:
                             </th>
-                            <td>Windows 95 3-Column Retro Dashboard</td>
+                            <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>Windows 95 3-Column Retro Dashboard</td>
                           </tr>
                           <tr>
-                            <th style={{ whiteSpace: "nowrap", verticalAlign: "top", paddingRight: "10px" }}>
+                            <th style={{ whiteSpace: "nowrap", width: "140px", verticalAlign: "top", paddingRight: "10px" }}>
                               AI Model:
                             </th>
-                            <td>Gemini 3.5 Flash (Google Generative AI)</td>
+                            <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>Gemini 3.5 Flash (Google Generative AI)</td>
                           </tr>
                           <tr>
-                            <th style={{ whiteSpace: "nowrap", verticalAlign: "top", paddingRight: "10px" }}>
+                            <th style={{ whiteSpace: "nowrap", width: "140px", verticalAlign: "top", paddingRight: "10px" }}>
                               Authentication:
                             </th>
-                            <td>Firebase Auth (Google Sign-In)</td>
+                            <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>Firebase Auth (Google Sign-In)</td>
                           </tr>
                           <tr>
-                            <th style={{ whiteSpace: "nowrap", verticalAlign: "top", paddingRight: "10px" }}>
+                            <th style={{ whiteSpace: "nowrap", width: "140px", verticalAlign: "top", paddingRight: "10px" }}>
                               Database:
                             </th>
-                            <td>Firebase Firestore (Cloud Native)</td>
+                            <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>Firebase Firestore (Cloud Native)</td>
                           </tr>
                           <tr>
-                            <th style={{ whiteSpace: "nowrap", verticalAlign: "top", paddingRight: "10px" }}>
+                            <th style={{ whiteSpace: "nowrap", width: "140px", verticalAlign: "top", paddingRight: "10px" }}>
                               Hosting:
                             </th>
-                            <td>Vercel Global Edge Network</td>
+                            <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>Vercel Global Edge Network</td>
                           </tr>
                           <tr>
-                            <th style={{ whiteSpace: "nowrap", verticalAlign: "top", paddingRight: "10px" }}>
+                            <th style={{ whiteSpace: "nowrap", width: "140px", verticalAlign: "top", paddingRight: "10px" }}>
                               Lead Architect:
                             </th>
-                            <td>
+                            <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>
                               <strong>Pinaki Roy</strong> (
                               <a
                                 href="https://www.linkedin.com/in/pinakiroysocial/"
@@ -1598,10 +1598,10 @@ export default function Home() {
                             </td>
                           </tr>
                           <tr>
-                            <th style={{ whiteSpace: "nowrap", verticalAlign: "top", paddingRight: "10px" }}>
+                            <th style={{ whiteSpace: "nowrap", width: "140px", verticalAlign: "top", paddingRight: "10px" }}>
                               Status:
                             </th>
-                            <td className="text-success font-weight-bold">
+                            <td className="text-success font-weight-bold" style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>
                               ● Active & Operational
                             </td>
                           </tr>
@@ -2012,8 +2012,8 @@ export default function Home() {
                     <tbody>
                       {recycledDecisions.map((item, idx) => (
                         <tr key={item.id || idx}>
-                          <td className="font-weight-bold">{item.title}</td>
-                          <td>{item.chosen_option}</td>
+                          <td className="font-weight-bold" style={{ wordBreak: "break-word", overflowWrap: "anywhere" }}>{item.title}</td>
+                          <td style={{ wordBreak: "break-word", overflowWrap: "anywhere" }}>{item.chosen_option}</td>
                           <td className="text-right">
                             <button
                               type="button"
@@ -2124,7 +2124,7 @@ export default function Home() {
       {/* --- MODAL: Settings Dialog --- */}
       {settingsModalOpen && (
         <div className="w95-modal-overlay" onClick={() => setSettingsModalOpen(false)}>
-          <div className="w95-modal-window" style={{ maxWidth: 500 }} onClick={(e) => e.stopPropagation()}>
+          <div className="w95-modal-window" style={{ width: "100%", maxWidth: 480 }} onClick={(e) => e.stopPropagation()}>
             <div className="w95-title-bar">
               <div className="w95-title-text">
                 <img src="/icons/settings.png" alt="" style={{ width: 16, height: 16 }} />
@@ -2137,27 +2137,27 @@ export default function Home() {
 
             <div className="p-3">
               <div className="w95-inset mb-3 p-3">
-                <table className="table table-sm table-borderless small mb-0" style={{ fontSize: 13 }}>
+                <table className="table table-sm table-borderless small mb-0 w95-table-fixed" style={{ width: "100%", tableLayout: "fixed", fontSize: 13 }}>
                   <tbody>
                     <tr>
-                      <th style={{ width: 130 }}>Firebase Project:</th>
-                      <td>decision-ledger-5931d</td>
+                      <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Firebase Project:</th>
+                      <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>decision-ledger-5931d</td>
                     </tr>
                     <tr>
-                      <th>Hosting Platform:</th>
-                      <td>Vercel Global Edge</td>
+                      <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Hosting Platform:</th>
+                      <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>Vercel Global Edge</td>
                     </tr>
                     <tr>
-                      <th>AI Model:</th>
-                      <td>Gemini 3.5 Flash</td>
+                      <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>AI Model:</th>
+                      <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>Gemini 3.5 Flash</td>
                     </tr>
                     <tr>
-                      <th>Signed-in User:</th>
-                      <td>{user?.email || "Guest Evaluator"}</td>
+                      <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Signed-in User:</th>
+                      <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>{user?.email || "Guest Evaluator"}</td>
                     </tr>
                     <tr>
-                      <th>Decisions Count:</th>
-                      <td>{decisions.length} stored records</td>
+                      <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Decisions Count:</th>
+                      <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>{decisions.length} stored records</td>
                     </tr>
                   </tbody>
                 </table>

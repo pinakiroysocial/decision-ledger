@@ -270,6 +270,13 @@ body, html, #__next {
   align-items: center;
   gap: 8px;
   font-weight: 500;
+  max-width: 240px;
+}
+
+.w95-toolbar-user span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* 4. Three-Column Dashboard Body */
@@ -529,6 +536,8 @@ body, html, #__next {
   padding: 12px;
   box-sizing: border-box;
   max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .w95-inset-gray {
@@ -536,6 +545,27 @@ body, html, #__next {
   background: #dfdfdf;
   padding: 8px 10px;
   box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Fixed Table Layout for System Info & Dialog Tables */
+.w95-table-fixed {
+  width: 100% !important;
+  table-layout: fixed !important;
+}
+
+.w95-table-fixed th {
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.w95-table-fixed td {
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  word-wrap: break-word !important;
+  white-space: normal !important;
+  vertical-align: top;
 }
 
 /* ==========================================================================
