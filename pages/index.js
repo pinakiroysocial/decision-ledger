@@ -543,25 +543,32 @@ export default function Home() {
               </div>
             )}
 
-            <div className="d-flex justify-content-end gap-2">
-              <button
-                className="w95-btn"
-                onClick={handleGuestLogin}
-                disabled={loginLoading}
-                title="Instant evaluation as a public guest"
-              >
-                <img src="/icons/explorer.png" alt="Guest" style={{ width: 16, height: 16 }} />
-                <span>{loginLoading ? "Connecting..." : "Explore as Guest"}</span>
-              </button>
-              <button
-                className="w95-btn w95-btn-primary"
-                onClick={handleLogin}
-                disabled={loginLoading}
-                title="Sign in with your Google Account"
-              >
-                <img src="/icons/user-avatar.png" alt="User" style={{ width: 16, height: 16 }} />
-                <span>{loginLoading ? "Authenticating..." : "Sign in with Google"}</span>
-              </button>
+            <div className="d-flex justify-content-between align-items-center mt-3 pt-2 border-top" style={{ fontSize: 12 }}>
+              <div className="d-flex gap-2 align-items-center">
+                <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "#000080", textDecoration: "underline" }}>Privacy Policy</a>
+                <span className="text-muted">•</span>
+                <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: "#000080", textDecoration: "underline" }}>Terms</a>
+              </div>
+              <div className="d-flex gap-2">
+                <button
+                  className="w95-btn"
+                  onClick={handleGuestLogin}
+                  disabled={loginLoading}
+                  title="Instant evaluation as a public guest"
+                >
+                  <img src="/icons/explorer.png" alt="Guest" style={{ width: 16, height: 16 }} />
+                  <span>{loginLoading ? "Connecting..." : "Explore as Guest"}</span>
+                </button>
+                <button
+                  className="w95-btn w95-btn-primary"
+                  onClick={handleLogin}
+                  disabled={loginLoading}
+                  title="Sign in with your Google Account"
+                >
+                  <img src="/icons/user-avatar.png" alt="User" style={{ width: 16, height: 16 }} />
+                  <span>{loginLoading ? "Authenticating..." : "Sign in with Google"}</span>
+                </button>
+              </div>
             </div>
           </div>
 
@@ -719,6 +726,15 @@ export default function Home() {
               <div className="w95-dropdown-item" onClick={() => { openHelpTopic("how-it-works"); setActiveMenuDropdown(null); }}>
                 <img src="/icons/help.png" alt="" style={{ width: 16, height: 16 }} />
                 <span>Help Topics</span>
+              </div>
+              <div className="w95-dropdown-divider" />
+              <div className="w95-dropdown-item" onClick={() => { window.open("/privacy", "_blank"); setActiveMenuDropdown(null); }}>
+                <img src="/icons/document.png" alt="" style={{ width: 16, height: 16 }} />
+                <span>Privacy Policy ↗</span>
+              </div>
+              <div className="w95-dropdown-item" onClick={() => { window.open("/terms", "_blank"); setActiveMenuDropdown(null); }}>
+                <img src="/icons/document.png" alt="" style={{ width: 16, height: 16 }} />
+                <span>Terms of Service ↗</span>
               </div>
               <div className="w95-dropdown-divider" />
               <div className="w95-dropdown-item" onClick={() => { setActiveTab("about"); setActiveMenuDropdown(null); }}>

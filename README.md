@@ -72,6 +72,8 @@ Wrapped in a pixel-perfect, authentic **Windows 95 workstation dashboard**, the 
 This system was architected, engineered, and polished by **Pinaki Roy**.
 
 - **Live URL:** [https://roy-decisionledger.vercel.app/](https://roy-decisionledger.vercel.app/)
+- **Privacy Policy:** [https://roy-decisionledger.vercel.app/privacy](https://roy-decisionledger.vercel.app/privacy)
+- **Terms of Service:** [https://roy-decisionledger.vercel.app/terms](https://roy-decisionledger.vercel.app/terms)
 - **LinkedIn:** [https://www.linkedin.com/in/pinakiroysocial/](https://www.linkedin.com/in/pinakiroysocial/)
 - **Repository:** Decision Ledger Workstation Edition
 - **Copyright:** © 2026 Pinaki Roy. All Rights Reserved.
