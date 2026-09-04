@@ -22,6 +22,7 @@ yarn-error.log*
 # Local environment and secrets (CRITICAL: NEVER COMMIT)
 .env*.local
 .env
+.env.production
 *.local
 *service-account*.json
 *.key.json
