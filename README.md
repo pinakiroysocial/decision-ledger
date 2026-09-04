@@ -1,9 +1,10 @@
 # Decision Ledger — Cloud-Native Decision Repository
 
+> **Live Production Application:** 🌐 [https://roy-decisionledger.vercel.app/](https://roy-decisionledger.vercel.app/)  
 > **Architect & Lead Developer:** [Pinaki Roy](https://www.linkedin.com/in/pinakiroysocial/)  
-> **Platform Status:** Operational & Publicly Available  
+> **Platform Status:** Operational & Live in Production  
 > **UI Aesthetic:** Authentic Windows 95 Full-Screen Workstation  
-> **Cloud Architecture:** Next.js 14 • Google Cloud Run • Cloud Firestore Native • Gemini 3.5 Flash
+> **Cloud Architecture:** Next.js 14 • Vercel Edge Platform • Cloud Firestore Native • Gemini 3.5 Flash
 
 ---
 
@@ -45,9 +46,10 @@ Wrapped in a pixel-perfect, authentic **Windows 95 workstation dashboard**, the 
 
 | Layer | Implementation Details |
 |---|---|
+| **Live Production** | 🌐 [https://roy-decisionledger.vercel.app/](https://roy-decisionledger.vercel.app/) |
 | **Lead Architect** | [Pinaki Roy (LinkedIn)](https://www.linkedin.com/in/pinakiroysocial/) |
 | **Frontend & Server** | Next.js 14 (App & Pages architecture, Standalone Docker container) |
-| **Cloud Hosting** | Google Cloud Run (`us-central1`), automated horizontal autoscaling |
+| **Cloud Hosting** | Vercel Global Edge Network (with Cloud Run container support) |
 | **Database** | Google Cloud Firestore (Native mode) with server-side Admin SDK verification |
 | **AI Synthesis** | Google Gemini 3.5 Flash with fallback resilience |
 | **Authentication** | Firebase Authentication (Google OAuth 2.0 & Anonymous Guest Sessions) |
@@ -62,6 +64,7 @@ Wrapped in a pixel-perfect, authentic **Windows 95 workstation dashboard**, the 
 
 This system was architected, engineered, and polished by **Pinaki Roy**.
 
+- **Live URL:** [https://roy-decisionledger.vercel.app/](https://roy-decisionledger.vercel.app/)
 - **LinkedIn:** [https://www.linkedin.com/in/pinakiroysocial/](https://www.linkedin.com/in/pinakiroysocial/)
 - **Repository:** Decision Ledger Workstation Edition
 - **Copyright:** © 2026 Pinaki Roy. All Rights Reserved.

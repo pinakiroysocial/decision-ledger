@@ -533,7 +533,7 @@ export default function Home() {
                 Welcome to <strong>Decision Ledger</strong>! Sign in with your Google account or continue as Guest to access your personal cloud ledger, record architecture decisions, and query rationales with Gemini AI.
               </p>
               <div className="text-muted small">
-                <strong>Engine:</strong> Google Gemini 3.5 Flash | <strong>Cloud Host:</strong> Cloud Run (us-central1)
+                <strong>Engine:</strong> Google Gemini 3.5 Flash | <strong>Cloud Host:</strong> Vercel / Cloud Run (us-central1)
               </div>
             </div>
 
