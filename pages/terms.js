@@ -32,8 +32,6 @@ export default function TermsOfService() {
           style={{
             maxWidth: "860px",
             width: "100%",
-            boxShadow: "2px 2px 10px rgba(0,0,0,0.5)",
-            fontFamily: "'Windows 95', 'MS Sans Serif', Tahoma, Geneva, Verdana, sans-serif",
           }}
         >
           {/* Title Bar - No fake close button, authentic icon */}
@@ -50,9 +48,8 @@ export default function TermsOfService() {
 
           {/* Document Content */}
           <div className="p-3">
-            <div style={{ position: "relative" }}>
-              <div
-                className="w95-inset p-4 bg-white"
+            <div
+              className="w95-inset p-4 bg-white"
                 style={{
                   maxHeight: "70vh",
                   overflowY: "auto",
@@ -162,20 +159,6 @@ export default function TermsOfService() {
                   </p>
                 </section>
               </div>
-
-              {/* Scroll continuation visual cue */}
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  height: "28px",
-                  background: "linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.95))",
-                  pointerEvents: "none",
-                }}
-              />
-            </div>
 
             {/* Bottom Actions - Single source of navigation with generous spacing */}
             <div className="d-flex justify-content-between align-items-center mt-3 pt-2">

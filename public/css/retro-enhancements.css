@@ -778,14 +778,21 @@ button,
   padding: 16px;
 }
 
+/* Authentic Windows 95 Floating Window & Dialog Frame */
+.w95-window,
+.w95-dialog-window,
 .w95-modal-window {
-  background: var(--w95-gray);
-  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
-  border: 1px solid #000;
-  padding: 3px;
+  background-color: var(--w95-gray) !important;
+  border-top: 2px solid #ffffff !important;
+  border-left: 2px solid #ffffff !important;
+  border-right: 2px solid #000000 !important;
+  border-bottom: 2px solid #000000 !important;
+  box-shadow: 
+    inset 1px 1px 0px #dfdfdf,
+    inset -1px -1px 0px #808080,
+    6px 6px 20px rgba(0, 0, 0, 0.55) !important;
+  padding: 3px !important;
   color: #000000;
-  width: 100%;
-  max-width: 580px;
   box-sizing: border-box;
 }
 

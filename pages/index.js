@@ -505,7 +505,7 @@ export default function Home() {
           fontFamily: "'Windows 95', 'MS Sans Serif', Tahoma, Geneva, Verdana, sans-serif",
         }}
       >
-        <div className="w95-modal-window" style={{ maxWidth: 520, boxShadow: "2px 2px 10px rgba(0,0,0,0.5)" }}>
+        <div className="w95-modal-window" style={{ maxWidth: 520 }}>
           <div className="w95-title-bar">
             <div className="w95-title-text">
               <img src="/icons/app-d.png" alt="Logo" style={{ width: 16, height: 16, marginRight: 6, imageRendering: "pixelated" }} />
