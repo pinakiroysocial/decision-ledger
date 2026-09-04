@@ -5,6 +5,7 @@
  * © 2026 Pinaki Roy. All Rights Reserved.
  */
 import Head from "next/head";
+import { Analytics } from "@vercel/analytics/next";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../public/css/w95.css";
 import "../public/css/retro-enhancements.css";
@@ -27,6 +28,7 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="/icons/app-d.png" />
       </Head>
       <Component {...pageProps} />
+      <Analytics />
     </>
   );
 }
