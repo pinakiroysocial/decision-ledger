@@ -1,0 +1,840 @@
+/**
+ * Decision Ledger - Cloud-Native Decision Repository
+ * Architect & Developer: Pinaki Roy
+ * LinkedIn: https://www.linkedin.com/in/pinakiroysocial/
+ * © 2026 Pinaki Roy. All Rights Reserved.
+ */
+
+/* Windows 95 Full-Screen 3-Column Retro Dashboard for Decision Ledger */
+
+:root {
+  --w95-gray: #c0c0c0;
+  --w95-dark: #808080;
+  --w95-light: #ffffff;
+  --w95-blue-dark: #000080;
+  --w95-blue-light: #1084d0;
+  --w95-teal: #008080;
+  --w95-black: #000000;
+}
+
+body, html, #__next {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--w95-gray);
+  font-family: 'Windows 95', 'MS Sans Serif', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  user-select: none;
+  font-size: 13px;
+}
+
+/* Authentic Pixel-Perfect Windows 95 Scrollbars */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #dfdfdf;
+  background-image: repeating-linear-gradient(45deg, #c0c0c0 25%, transparent 25%, transparent 75%, #c0c0c0 75%, #c0c0c0),
+                    repeating-linear-gradient(45deg, #c0c0c0 25%, #dfdfdf 25%, #dfdfdf 75%, #c0c0c0 75%, #c0c0c0);
+  background-position: 0 0, 4px 4px;
+  background-size: 8px 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--w95-gray);
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:active {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+}
+
+::-webkit-scrollbar-button {
+  background: var(--w95-gray);
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+/* Fullscreen App Container */
+.w95-fullscreen-app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--w95-gray);
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 3px solid #ffffff;
+  border-right-color: #0a0a0a;
+  border-bottom-color: #0a0a0a;
+  border-left-color: #dfdfdf;
+  border-top-color: #dfdfdf;
+}
+
+/* 1. Main Title Bar */
+.w95-title-bar {
+  background: linear-gradient(90deg, var(--w95-blue-dark) 0%, var(--w95-blue-light) 100%);
+  padding: 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  min-height: 30px;
+  flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.w95-title-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.w95-title-controls {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+
+.w95-title-btn {
+  background: var(--w95-gray);
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+  border: none;
+  font-size: 11px;
+  font-weight: bold;
+  font-family: 'Marlett', 'MS Sans Serif', sans-serif;
+  width: 18px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.w95-title-btn:active {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a;
+}
+
+/* 2. Menu Bar */
+.w95-menu-bar {
+  display: flex;
+  align-items: center;
+  padding: 3px 8px;
+  font-size: 13px;
+  border-bottom: 1px solid #808080;
+  background: var(--w95-gray);
+  flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 4px;
+}
+
+.w95-menu-item {
+  cursor: pointer;
+  padding: 3px 10px;
+  position: relative;
+}
+
+.w95-menu-item:hover, .w95-menu-item.active {
+  background: var(--w95-blue-dark);
+  color: #ffffff;
+}
+
+.w95-menu-item u {
+  text-decoration: underline;
+}
+
+/* Dropdown Submenus */
+.w95-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--w95-gray);
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf, 2px 2px 5px rgba(0,0,0,0.5);
+  border: 1px solid #000;
+  padding: 3px;
+  z-index: 1000;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+}
+
+.w95-dropdown-item {
+  padding: 5px 14px;
+  font-size: 12px;
+  color: #000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.w95-dropdown-item:hover {
+  background: var(--w95-blue-dark);
+  color: #fff;
+}
+
+.w95-dropdown-divider {
+  height: 1px;
+  background: #808080;
+  border-bottom: 1px solid #fff;
+  margin: 4px 2px;
+}
+
+/* 3. Icon Toolbar */
+.w95-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 8px;
+  background: var(--w95-gray);
+  border-bottom: 2px solid #808080;
+  box-shadow: 0 1px 0 #ffffff;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 42px;
+}
+
+.w95-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.w95-toolbar-btn {
+  background: var(--w95-gray);
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+  border: 1px solid #000;
+  padding: 5px 14px;
+  min-height: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  outline: none;
+  line-height: 1;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.w95-toolbar-btn:hover {
+  background: #dfdfdf;
+}
+
+.w95-toolbar-btn:active, .w95-toolbar-btn.active {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+  background: #c8c8c8;
+}
+
+.w95-toolbar-divider {
+  width: 2px;
+  height: 26px;
+  background: #808080;
+  border-right: 1px solid #ffffff;
+  margin: 0 8px;
+}
+
+.w95-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.w95-toolbar-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+/* 4. Three-Column Dashboard Body */
+.w95-dashboard-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  background: var(--w95-gray);
+  overflow: hidden;
+  padding: 6px;
+  gap: 6px;
+  box-sizing: border-box;
+}
+
+/* Left Sidebar */
+.w95-sidebar-left {
+  width: 235px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Center Content Column */
+.w95-center-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding-right: 2px;
+}
+
+/* Right Sidebar */
+.w95-sidebar-right {
+  width: 280px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Generic Windows 95 Beveled Panel */
+.w95-panel {
+  background: var(--w95-gray);
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+  border: 1px solid #000;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.w95-panel-title {
+  padding: 4px 8px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 1.2;
+  min-height: 26px;
+}
+
+.w95-panel-title-teal {
+  background: linear-gradient(90deg, #008080 0%, #00b0b0 100%);
+}
+
+.w95-panel-title-blue {
+  background: linear-gradient(90deg, var(--w95-blue-dark) 0%, var(--w95-blue-light) 100%);
+}
+
+.w95-panel-chevron {
+  background: var(--w95-gray);
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff;
+  border: none;
+  width: 16px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  cursor: pointer;
+  padding: 0;
+  color: #000;
+  line-height: 1;
+}
+
+.w95-panel-body {
+  padding: 8px;
+  box-sizing: border-box;
+  background: var(--w95-gray);
+}
+
+/* Navigation Tree Items */
+.w95-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 8px;
+}
+
+.w95-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  font-size: 13px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  color: #000;
+  min-height: 28px;
+}
+
+.w95-nav-item:hover {
+  background: #dfdfdf;
+}
+
+.w95-nav-item.active {
+  background: var(--w95-blue-dark);
+  color: #ffffff;
+  outline: 1px dotted #ffffff;
+  outline-offset: -2px;
+  font-weight: bold;
+}
+
+.w95-nav-divider {
+  font-size: 11px;
+  color: #444;
+  font-weight: bold;
+  padding: 6px 8px 3px 8px;
+  letter-spacing: 0.5px;
+}
+
+/* Teal Header Banner */
+.w95-teal-banner {
+  background-color: var(--w95-teal);
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  color: #ffffff;
+  border: 1px solid #000;
+  min-height: 96px;
+}
+
+.w95-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.w95-banner-titles {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.w95-banner-title {
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1.25;
+  color: #ffffff;
+  text-shadow: 2px 2px #000000;
+  letter-spacing: 1.5px;
+  margin: 0;
+  text-align: left;
+}
+
+.w95-banner-tagline {
+  font-size: 13px;
+  font-style: italic;
+  color: #e0ffff;
+  line-height: 1.35;
+}
+
+.w95-banner-usercard {
+  background: var(--w95-gray);
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+  border: 1px solid #000;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #000;
+}
+
+/* Tabs Bar */
+.w95-tabs-container {
+  padding: 3px 3px 0 3px;
+  background: var(--w95-gray);
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.w95-tabs {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-bottom: 2px solid var(--w95-gray);
+  gap: 4px;
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.w95-tabs::-webkit-scrollbar,
+.w95-tabs-container::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.w95-tab-item {
+  background: var(--w95-gray);
+  box-shadow: inset -1px 0px #0a0a0a, inset 1px 1px #fff, inset -2px 0px #808080, inset 2px 2px #dfdfdf;
+  padding: 7px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  position: relative;
+  top: 2px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.w95-tab-item.active {
+  box-shadow: inset -1px 0px #0a0a0a, inset 1px 1px #fff, inset -2px 0px #808080, inset 2px 2px #dfdfdf;
+  font-weight: bold;
+  padding-bottom: 9px;
+  margin-top: -2px;
+  background: var(--w95-gray);
+  z-index: 5;
+}
+
+/* Sunken Inset Box */
+.w95-inset {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+  background: #ffffff;
+  padding: 12px;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.w95-inset-gray {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+  background: #dfdfdf;
+  padding: 8px 10px;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Systemic Button Architecture (Windows 95 Authentic Sizing & Padding)
+   ========================================================================== */
+
+/* Universal button normalization */
+button,
+.w95-btn,
+.w95-toolbar-btn,
+.w95-title-btn {
+  box-sizing: border-box !important;
+  font-family: 'Windows 95', 'MS Sans Serif', Tahoma, Geneva, Verdana, sans-serif;
+  user-select: none;
+}
+
+/* Primary Windows 95 Action Button */
+.w95-btn {
+  background: var(--w95-gray);
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+  border: 1px solid #000000;
+  color: #000000;
+  min-height: 28px;
+  padding: 4px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  outline: none;
+  white-space: nowrap;
+  line-height: 1.25;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  min-width: max-content;
+}
+
+.w95-btn:hover {
+  background: #cfcfcf;
+}
+
+.w95-btn:active {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+  background: #c8c8c8;
+}
+
+.w95-btn:disabled {
+  color: #808080;
+  text-shadow: 1px 1px 0px #ffffff;
+  cursor: not-allowed;
+}
+
+.w95-btn-primary {
+  font-weight: bold;
+}
+
+/* Compact / Sub-Action Button */
+.w95-btn-sm {
+  min-height: 26px;
+  padding: 3px 14px;
+  font-size: 12px;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* Standard Dialog Buttons (OK, Cancel, Close, Clear, Apply) */
+.w95-btn-dialog,
+.w95-modal-window .w95-btn:not(.w95-btn-sm):not(.w95-btn-icon) {
+  min-width: 82px;
+  padding: 4px 18px;
+  text-align: center;
+}
+
+/* Square Icon-Only Buttons (table edit, delete, etc.) */
+.w95-btn-icon {
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  min-height: 26px;
+  padding: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.w95-btn-danger {
+  color: #a00000;
+}
+
+/* Button Content Alignment: Ensure all icons and text align on exact center axis */
+.w95-btn img,
+.w95-btn-sm img,
+.w95-toolbar-btn img,
+.w95-btn-dialog img,
+.w95-btn-icon img {
+  display: block;
+  flex-shrink: 0;
+  image-rendering: pixelated;
+  margin: 0;
+}
+
+.w95-btn span,
+.w95-btn-sm span,
+.w95-toolbar-btn span,
+.w95-btn-dialog span {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* Form Inputs */
+.w95-input, .w95-textarea {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+  border: none;
+  background: #ffffff;
+  padding: 7px 10px;
+  font-size: 13px;
+  font-family: 'Segoe UI', Tahoma, monospace, sans-serif;
+  color: #000000;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.w95-input:focus, .w95-textarea:focus {
+  outline: none;
+  background: #fffff8;
+}
+
+/* Fieldset */
+.w95-fieldset {
+  border: 2px groove #ffffff;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.w95-legend {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 0 6px;
+  width: auto;
+  margin-bottom: 0;
+}
+
+/* Stats Row */
+.w95-stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px;
+  font-size: 13px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.w95-stat-row:last-child {
+  border-bottom: none;
+}
+
+.w95-stat-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #222;
+}
+
+.w95-stat-val {
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 14px;
+}
+
+/* FAQ Clickable Items */
+.w95-faq-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #000080;
+  border-bottom: 1px solid #f0f0f0;
+  text-decoration: none;
+}
+
+.w95-faq-item:hover {
+  text-decoration: underline;
+  background: #f8f8ff;
+}
+
+/* Status Bar */
+.w95-statusbar {
+  display: flex;
+  gap: 4px;
+  padding: 3px 6px;
+  background: var(--w95-gray);
+  border-top: 1px solid #ffffff;
+  box-shadow: inset 0 1px 0 #dfdfdf;
+  flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 28px;
+}
+
+.w95-status-pane {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #808080;
+  padding: 3px 10px;
+  font-size: 12px;
+  color: #222;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Modals */
+.w95-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  padding: 16px;
+}
+
+.w95-modal-window {
+  background: var(--w95-gray);
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+  border: 1px solid #000;
+  padding: 3px;
+  color: #000000;
+  width: 100%;
+  max-width: 580px;
+  box-sizing: border-box;
+}
+
+/* Formatted AI Answer */
+.ai-answer-content {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #111111;
+}
+
+.ai-answer-content strong {
+  font-weight: 700;
+  color: #000080;
+}
+
+.ai-answer-content ul {
+  padding-left: 20px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.ai-answer-content li {
+  margin-bottom: 4px;
+}
+
+.ai-answer-content p {
+  margin-bottom: 8px;
+}
+
+code {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: transparent;
+  padding: 0;
+}
+
+/* Responsive Rules */
+@media (max-width: 1024px) {
+  .w95-sidebar-right {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .w95-sidebar-left {
+    display: none;
+  }
+  .w95-teal-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .w95-banner-usercard {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,16 @@
+// Decision Ledger - Cloud-Native Decision Repository
+// Architect & Developer: Pinaki Roy
+// LinkedIn: https://www.linkedin.com/in/pinakiroysocial/
+// © 2026 Pinaki Roy. All Rights Reserved.
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /decisions/{decisionId} {
+      // Secure multi-tenant read rule: Signed-in users can only read their own decisions
+      allow read: if request.auth != null && resource.data.ownerUid == request.auth.uid;
+      // All writes are processed server-side via authenticated Next.js API routes with Firebase Admin SDK
+      allow write: if false;
+    }
+  }
+}

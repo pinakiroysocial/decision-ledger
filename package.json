@@ -1,0 +1,21 @@
+{
+  "name": "decision-ledger",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Decision Ledger – Cloud-Native Decision Repository Architected and Built by Pinaki Roy",
+  "author": "Pinaki Roy (https://www.linkedin.com/in/pinakiroysocial/)",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p ${PORT:-8080}"
+  },
+  "dependencies": {
+    "@google/generative-ai": "0.15.0",
+    "bootstrap": "^4.6.2",
+    "firebase": "10.12.5",
+    "firebase-admin": "12.3.1",
+    "next": "14.2.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  }
+}
