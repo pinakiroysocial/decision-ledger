@@ -47,7 +47,15 @@ export default function MaintenancePage() {
 
           {/* Dialog Body */}
           <div className="p-3">
-            <div className="d-flex align-items-start gap-3 mb-3">
+            {/* Header row: Icon vertically center-aligned with the heading text specifically */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                marginBottom: "12px",
+              }}
+            >
               <img
                 src="/icons/msg-maintenance.png"
                 alt="Maintenance"
@@ -56,50 +64,49 @@ export default function MaintenancePage() {
                   height: 32,
                   flexShrink: 0,
                   imageRendering: "pixelated",
-                  marginTop: 2,
                 }}
               />
-              <div style={{ flex: 1 }}>
-                <h2
-                  style={{
-                    fontSize: "16px",
-                    fontWeight: "bold",
-                    margin: "0 0 8px 0",
-                    color: "#000000",
-                    fontFamily: "inherit",
-                  }}
-                >
-                  Scheduled System Maintenance
-                </h2>
-                <p
-                  style={{
-                    margin: "0 0 12px 0",
-                    lineHeight: "1.55",
-                    fontSize: "13px",
-                    color: "#222222",
-                  }}
-                >
-                  Decision Ledger is currently undergoing scheduled infrastructure upgrades and database maintenance. We will be back online shortly.
-                </p>
+              <h2
+                style={{
+                  fontSize: "16px",
+                  fontWeight: "bold",
+                  margin: 0,
+                  color: "#000000",
+                  fontFamily: "inherit",
+                  lineHeight: "1.2",
+                }}
+              >
+                Scheduled System Maintenance
+              </h2>
+            </div>
 
-                <div
-                  className="w95-inset p-2 bg-white"
-                  style={{
-                    fontSize: "12px",
-                    lineHeight: "1.6",
-                    color: "#111111",
-                  }}
-                >
-                  <div>
-                    <strong>System State:</strong> <span>Offline for Maintenance</span>
-                  </div>
-                  <div>
-                    <strong>Cloud Infrastructure:</strong> <span>Vercel Global Edge / Google Cloud Firestore</span>
-                  </div>
-                  <div>
-                    <strong>Estimated Resumption:</strong> <span>Shortly</span>
-                  </div>
-                </div>
+            <p
+              style={{
+                margin: "0 0 12px 0",
+                lineHeight: "1.55",
+                fontSize: "13px",
+                color: "#222222",
+              }}
+            >
+              Decision Ledger is currently undergoing scheduled infrastructure upgrades and database maintenance. We will be back online shortly.
+            </p>
+
+            <div
+              className="w95-inset p-2 bg-white mb-3"
+              style={{
+                fontSize: "12px",
+                lineHeight: "1.6",
+                color: "#111111",
+              }}
+            >
+              <div>
+                <strong>System State:</strong> <span>Offline for Maintenance</span>
+              </div>
+              <div>
+                <strong>Cloud Infrastructure:</strong> <span>Vercel Global Edge / Google Cloud Firestore</span>
+              </div>
+              <div>
+                <strong>Estimated Resumption:</strong> <span>Shortly</span>
               </div>
             </div>
 

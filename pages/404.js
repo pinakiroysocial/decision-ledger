@@ -77,8 +77,15 @@ export default function Custom404() {
 
           {/* Dialog Body */}
           <div className="p-3">
-            {/* Top Error Message Block with 32x32 Win95 Red Stop Icon */}
-            <div className="d-flex align-items-start gap-3 mb-3">
+            {/* Header row: Icon vertically center-aligned with the heading text specifically */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                marginBottom: "12px",
+              }}
+            >
               <img
                 src="/icons/msg-error.png"
                 alt="Error"
@@ -87,47 +94,46 @@ export default function Custom404() {
                   height: 32,
                   flexShrink: 0,
                   imageRendering: "pixelated",
-                  marginTop: 2,
                 }}
               />
-              <div style={{ flex: 1 }}>
-                <h2
-                  style={{
-                    fontSize: "16px",
-                    fontWeight: "bold",
-                    margin: "0 0 8px 0",
-                    color: "#000000",
-                    fontFamily: "inherit",
-                  }}
-                >
-                  404 - Page Not Found
-                </h2>
-                <p
-                  style={{
-                    margin: "0 0 12px 0",
-                    lineHeight: "1.55",
-                    fontSize: "13px",
-                    color: "#222222",
-                  }}
-                >
-                  The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
-                </p>
+              <h2
+                style={{
+                  fontSize: "16px",
+                  fontWeight: "bold",
+                  margin: 0,
+                  color: "#000000",
+                  fontFamily: "inherit",
+                  lineHeight: "1.2",
+                }}
+              >
+                404 - Page Not Found
+              </h2>
+            </div>
 
-                <div
-                  className="w95-inset p-2 bg-white"
-                  style={{
-                    fontSize: "12px",
-                    lineHeight: "1.6",
-                    color: "#111111",
-                  }}
-                >
-                  <div>
-                    <strong>Error Code:</strong> <code>0x00000404</code>
-                  </div>
-                  <div style={{ wordBreak: "break-all" }}>
-                    <strong>Requested URL:</strong> <code>{requestedUrl || router.asPath || "/..."}</code>
-                  </div>
-                </div>
+            <p
+              style={{
+                margin: "0 0 12px 0",
+                lineHeight: "1.55",
+                fontSize: "13px",
+                color: "#222222",
+              }}
+            >
+              The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+            </p>
+
+            <div
+              className="w95-inset p-2 bg-white mb-3"
+              style={{
+                fontSize: "12px",
+                lineHeight: "1.6",
+                color: "#111111",
+              }}
+            >
+              <div>
+                <strong>Error Code:</strong> <code>0x00000404</code>
+              </div>
+              <div style={{ wordBreak: "break-all" }}>
+                <strong>Requested URL:</strong> <code>{requestedUrl || router.asPath || "/..."}</code>
               </div>
             </div>
 
