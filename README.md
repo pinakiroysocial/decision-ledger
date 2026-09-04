@@ -3,7 +3,7 @@
 <img src="public/img/logo.png" alt="Decision Ledger Logo" width="128" height="128" />
 
 # Decision Ledger
-### Intelligent Architectural Decision Repository
+### Architectural Decision Repository
 
 > **Live Production Application:** 🌐 [https://roy-decisionledger.vercel.app/](https://roy-decisionledger.vercel.app/)  
 > **Architect & Lead Developer:** [Pinaki Roy](https://www.linkedin.com/in/pinakiroysocial/)  

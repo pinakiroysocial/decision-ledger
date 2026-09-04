@@ -173,7 +173,7 @@ export default function Home() {
   // Author & System Watermark in Console
   useEffect(() => {
     console.log(
-      "%c=======================================================\\n DECISION LEDGER - Cloud-Native Decision Repository\\n Architect & Developer: Pinaki Roy\\n Connect on LinkedIn: https://www.linkedin.com/in/pinakiroysocial/\\n=======================================================",
+      "%c=======================================================\\n DECISION LEDGER - Architectural Decision Repository\\n Architect & Developer: Pinaki Roy\\n Connect on LinkedIn: https://www.linkedin.com/in/pinakiroysocial/\\n=======================================================",
       "color: #008080; font-weight: bold; font-family: monospace; font-size: 12px;"
     );
   }, []);
@@ -243,6 +243,9 @@ export default function Home() {
         fetchDecisions();
       } else {
         setDecisions([]);
+        setAiInquiriesCount(0);
+        setExploredCount(0);
+        setLastActivityTime(null);
       }
     });
     return unsubscribe;
@@ -272,8 +275,10 @@ export default function Home() {
     setLoginLoading(true);
     setLoginError(null);
     try {
+      setAiInquiriesCount(0);
+      setExploredCount(0);
+      setLastActivityTime(null);
       await loginWithGoogle();
-      recordActivity();
     } catch (err) {
       console.error(err);
       setLoginError(err.message || "Failed to sign in with Google");
@@ -286,8 +291,10 @@ export default function Home() {
     setLoginLoading(true);
     setLoginError(null);
     try {
+      setAiInquiriesCount(0);
+      setExploredCount(0);
+      setLastActivityTime(null);
       await loginAnonymously();
-      recordActivity();
     } catch (err) {
       console.error("Guest login error:", err);
       setLoginError(err.message || "Failed to initiate guest evaluation session. Please use Google Sign-In.");
@@ -485,11 +492,23 @@ export default function Home() {
   // If user is not logged in: Win95 logon dialog
   if (!user) {
     return (
-      <div className="w95-fullscreen-app d-flex align-items-center justify-content-center p-3">
-        <div className="w95-modal-window" style={{ maxWidth: 500 }}>
+      <div
+        style={{
+          minHeight: "100vh",
+          width: "100vw",
+          backgroundColor: "#008080",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "16px",
+          boxSizing: "border-box",
+          fontFamily: "'Windows 95', 'MS Sans Serif', Tahoma, Geneva, Verdana, sans-serif",
+        }}
+      >
+        <div className="w95-modal-window" style={{ maxWidth: 520, boxShadow: "2px 2px 10px rgba(0,0,0,0.5)" }}>
           <div className="w95-title-bar">
             <div className="w95-title-text">
-              <img src="/icons/app-d.png" alt="Logo" style={{ width: 20, height: 20, imageRendering: "pixelated" }} />
+              <img src="/icons/app-d.png" alt="Logo" style={{ width: 16, height: 16, marginRight: 6, imageRendering: "pixelated" }} />
               <span>Welcome to Decision Ledger</span>
             </div>
           </div>
@@ -497,11 +516,11 @@ export default function Home() {
           <div className="p-4">
             <div className="d-flex align-items-center mb-4">
               <img
-                src="/icons/banner-logo.png"
+                src="/icons/app-d.png"
                 alt="Logo"
                 style={{
-                  width: 58,
-                  height: 58,
+                  width: 56,
+                  height: 56,
                   border: "2px solid #808080",
                   boxShadow: "inset -1px -1px #fff, inset 1px 1px #000",
                   marginRight: 16,
@@ -510,12 +529,12 @@ export default function Home() {
                 }}
               />
               <div>
-                <h4 className="font-weight-bold mb-1">Decision Ledger for Workgroups</h4>
+                <h4 className="font-weight-bold mb-1" style={{ letterSpacing: "0.5px" }}>Decision Ledger</h4>
                 <p className="small text-muted mb-0">
-                  Cloud-Native Architectural Record & Rationale Engine
+                  Architectural Decision Repository
                 </p>
                 <div className="small mt-1">
-                  Built by{" "}
+                  Architect & Developer:{" "}
                   <a
                     href="https://www.linkedin.com/in/pinakiroysocial/"
                     target="_blank"
@@ -530,7 +549,7 @@ export default function Home() {
 
             <div className="w95-inset mb-4 p-3" style={{ fontSize: 13, lineHeight: 1.5 }}>
               <p className="mb-2">
-                Welcome to <strong>Decision Ledger</strong>! Sign in with your Google account or continue as Guest to access your personal cloud ledger, record architecture decisions, and query rationales with Gemini AI.
+                Welcome to <strong>Decision Ledger</strong>! Sign in with your Google account or continue as Guest to access your personal architecture ledger, record decisions, and query rationales with Gemini AI.
               </p>
               <div className="text-muted small">
                 <strong>Engine:</strong> Google Gemini 3.5 Flash | <strong>Host:</strong> Vercel Global Edge
@@ -543,32 +562,36 @@ export default function Home() {
               </div>
             )}
 
-            <div className="d-flex justify-content-between align-items-center mt-3 pt-2 border-top" style={{ fontSize: 12 }}>
-              <div className="d-flex gap-2 align-items-center">
+            {/* Legal & Compliance Link Row (dedicated row with clean spacing) */}
+            <div className="d-flex justify-content-between align-items-center mb-3 pt-2 border-top" style={{ fontSize: 12 }}>
+              <span className="text-muted">Legal & Compliance:</span>
+              <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
                 <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "#000080", textDecoration: "underline" }}>Privacy Policy</a>
                 <span className="text-muted">•</span>
-                <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: "#000080", textDecoration: "underline" }}>Terms</a>
+                <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: "#000080", textDecoration: "underline" }}>Terms of Service</a>
               </div>
-              <div className="d-flex gap-2">
-                <button
-                  className="w95-btn"
-                  onClick={handleGuestLogin}
-                  disabled={loginLoading}
-                  title="Instant evaluation as a public guest"
-                >
-                  <img src="/icons/explorer.png" alt="Guest" style={{ width: 16, height: 16 }} />
-                  <span>{loginLoading ? "Connecting..." : "Explore as Guest"}</span>
-                </button>
-                <button
-                  className="w95-btn w95-btn-primary"
-                  onClick={handleLogin}
-                  disabled={loginLoading}
-                  title="Sign in with your Google Account"
-                >
-                  <img src="/icons/user-avatar.png" alt="User" style={{ width: 16, height: 16 }} />
-                  <span>{loginLoading ? "Authenticating..." : "Sign in with Google"}</span>
-                </button>
-              </div>
+            </div>
+
+            {/* Action Buttons (with generous 12px gap) */}
+            <div style={{ display: "flex", justifyContent: "flex-end", gap: "12px", alignItems: "center" }}>
+              <button
+                className="w95-btn"
+                onClick={handleGuestLogin}
+                disabled={loginLoading}
+                title="Instant evaluation as a public guest"
+              >
+                <img src="/icons/explorer.png" alt="Guest" style={{ width: 16, height: 16, imageRendering: "pixelated" }} />
+                <span>{loginLoading ? "Connecting..." : "Explore as Guest"}</span>
+              </button>
+              <button
+                className="w95-btn w95-btn-primary"
+                onClick={handleLogin}
+                disabled={loginLoading}
+                title="Sign in with your Google Account"
+              >
+                <img src="/icons/user-avatar.png" alt="User" style={{ width: 16, height: 16, imageRendering: "pixelated" }} />
+                <span>{loginLoading ? "Authenticating..." : "Sign in with Google"}</span>
+              </button>
             </div>
           </div>
 
@@ -815,7 +838,7 @@ export default function Home() {
       {/* 4. Three-Column Dashboard Body */}
       <div className="w95-dashboard-body">
 
-        {/* --- LEFT SIDEBAR: Navigation, Quick Access, Cloud Status --- */}
+        {/* --- LEFT SIDEBAR: Navigation, Quick Access --- */}
         <div className="w95-sidebar-left">
           {/* Navigation Panel */}
           <div className="w95-panel">
@@ -894,7 +917,7 @@ export default function Home() {
           <div className="w95-teal-banner">
             <div className="w95-banner-left">
               <img
-                src="/icons/banner-logo.png"
+                src="/icons/app-d.png"
                 alt="Logo"
                 style={{ width: 48, height: 48, imageRendering: "pixelated" }}
               />

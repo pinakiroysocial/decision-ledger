@@ -1,5 +1,5 @@
 /**
- * Decision Ledger - Cloud-Native Decision Repository
+ * Decision Ledger – Architectural Decision Repository
  * Architect & Developer: Pinaki Roy
  * LinkedIn: https://www.linkedin.com/in/pinakiroysocial/
  * © 2026 Pinaki Roy. All Rights Reserved.
@@ -13,14 +13,14 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Decision Ledger – Cloud-Native Decision Repository</title>
+        <title>Decision Ledger – Architectural Decision Repository</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Decision Ledger – Cloud-Native Decision Repository architected and built by Pinaki Roy." />
+        <meta name="description" content="Decision Ledger – Architectural Decision Repository architected and built by Pinaki Roy." />
         <meta name="author" content="Pinaki Roy" />
         <meta name="creator" content="Pinaki Roy" />
         <meta name="publisher" content="Pinaki Roy" />
         <link rel="author" href="https://www.linkedin.com/in/pinakiroysocial/" />
-        <meta property="og:title" content="Decision Ledger – Cloud-Native Decision Repository" />
+        <meta property="og:title" content="Decision Ledger – Architectural Decision Repository" />
         <meta property="og:description" content="Structured architectural decision logs and AI-powered decision analysis by Pinaki Roy." />
         <meta property="og:author" content="Pinaki Roy" />
         <meta name="theme-color" content="#008080" />

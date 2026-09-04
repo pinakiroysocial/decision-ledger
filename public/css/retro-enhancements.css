@@ -438,12 +438,12 @@ body, html, #__next {
 }
 
 .w95-banner-title {
-  font-size: 26px;
+  font-size: 25px;
   font-weight: 900;
-  line-height: 1.25;
+  line-height: 1.45;
   color: #ffffff;
   text-shadow: 2px 2px #000000;
-  letter-spacing: 1.5px;
+  letter-spacing: 2.5px;
   margin: 0;
   text-align: left;
 }
@@ -471,7 +471,9 @@ body, html, #__next {
   padding: 3px 3px 0 3px;
   background: var(--w95-gray);
   flex-shrink: 0;
-  overflow: visible;
+  overflow: hidden !important;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .w95-tabs {
@@ -481,15 +483,17 @@ body, html, #__next {
   list-style: none;
   border-bottom: 2px solid var(--w95-gray);
   gap: 4px;
-  overflow: visible;
+  overflow: hidden !important;
   white-space: nowrap;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .w95-tabs::-webkit-scrollbar,
 .w95-tabs-container::-webkit-scrollbar {
-  display: none;
-  width: 0;
-  height: 0;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 .w95-tab-item {
@@ -554,8 +558,8 @@ button,
   box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
   border: 1px solid #000000;
   color: #000000;
-  min-height: 28px;
-  padding: 4px 18px;
+  min-height: 30px;
+  padding: 6px 14px !important;
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
@@ -569,7 +573,8 @@ button,
   line-height: 1.25;
   box-sizing: border-box;
   flex-shrink: 0;
-  min-width: max-content;
+  width: auto !important;
+  max-width: fit-content;
 }
 
 .w95-btn:hover {
@@ -594,18 +599,20 @@ button,
 /* Compact / Sub-Action Button */
 .w95-btn-sm {
   min-height: 26px;
-  padding: 3px 14px;
+  padding: 4px 12px !important;
   font-size: 12px;
   gap: 6px;
   flex-shrink: 0;
+  width: auto !important;
 }
 
 /* Standard Dialog Buttons (OK, Cancel, Close, Clear, Apply) */
 .w95-btn-dialog,
 .w95-modal-window .w95-btn:not(.w95-btn-sm):not(.w95-btn-icon) {
-  min-width: 82px;
-  padding: 4px 18px;
+  min-width: 84px;
+  padding: 6px 16px !important;
   text-align: center;
+  width: auto !important;
 }
 
 /* Square Icon-Only Buttons (table edit, delete, etc.) */

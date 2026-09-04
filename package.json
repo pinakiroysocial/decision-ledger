@@ -2,7 +2,7 @@
   "name": "decision-ledger",
   "version": "1.0.0",
   "private": true,
-  "description": "Decision Ledger – Cloud-Native Decision Repository Architected and Built by Pinaki Roy",
+  "description": "Decision Ledger – Architectural Decision Repository Architected and Built by Pinaki Roy",
   "author": "Pinaki Roy (https://www.linkedin.com/in/pinakiroysocial/)",
   "scripts": {
     "dev": "next dev",
