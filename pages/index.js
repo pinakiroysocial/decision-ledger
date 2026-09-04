@@ -108,6 +108,30 @@ function formatInline(str) {
   return res;
 }
 
+function getUserFirstName(u) {
+  if (!u) return "Guest";
+  // 1. Google Account Display Name (from Firebase user or providerData)
+  const rawName = u.displayName || (u.providerData && u.providerData[0] && u.providerData[0].displayName);
+  if (rawName && typeof rawName === "string" && rawName.trim()) {
+    const firstName = rawName.trim().split(/\s+/)[0];
+    if (firstName) return firstName;
+  }
+  // 2. Fallback: Parse first name from email address
+  if (u.email && typeof u.email === "string") {
+    const localPart = u.email.split("@")[0] || "";
+    const firstToken = localPart.split(/[._-]/)[0];
+    if (firstToken) {
+      const clean = firstToken.replace(/^[0-9]+/, "");
+      if (clean) {
+        return clean.charAt(0).toUpperCase() + clean.slice(1);
+      }
+      return firstToken.charAt(0).toUpperCase() + firstToken.slice(1);
+    }
+    return localPart;
+  }
+  return "Guest";
+}
+
 export default function Home() {
   const [user, setUser] = useState(null);
   const [activeTab, setActiveTab] = useState("log"); // 'log' | 'ask' | 'history' | 'about'
@@ -832,9 +856,9 @@ export default function Home() {
 
         <div className="w95-toolbar-right">
           <div className="w95-toolbar-divider" />
-          <div className="w95-toolbar-user" title={`Authenticated as ${user?.email || "Guest Evaluator"}`}>
+          <div className="w95-toolbar-user" title={user?.email ? `Authenticated as ${user.email}` : "Guest Evaluator"}>
             <img src="/icons/user-avatar.png" alt="" style={{ width: 22, height: 22 }} />
-            <span>{user?.email || "Guest Evaluator"}</span>
+            <span>{getUserFirstName(user)}</span>
           </div>
         </div>
       </div>
@@ -942,7 +966,13 @@ export default function Home() {
               />
               <div style={{ fontSize: 12 }}>
                 <div className="text-muted" style={{ fontSize: 11 }}>Signed in as</div>
-                <div className="font-weight-bold" style={{ wordBreak: "break-word", maxWidth: 140 }}>{user?.email || "Guest Evaluator"}</div>
+                <div
+                  className="font-weight-bold"
+                  style={{ wordBreak: "break-word", maxWidth: 140 }}
+                  title={user?.email ? `Signed in as ${user.email}` : "Guest Evaluator"}
+                >
+                  {getUserFirstName(user)}
+                </div>
               </div>
               <button className="w95-btn w95-btn-sm ml-2" onClick={logout}>
                 Log Out
@@ -2153,7 +2183,7 @@ export default function Home() {
                     </tr>
                     <tr>
                       <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Signed-in User:</th>
-                      <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>{user?.email || "Guest Evaluator"}</td>
+                      <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>{user?.email ? `${getUserFirstName(user)} (${user.email})` : "Guest Evaluator"}</td>
                     </tr>
                     <tr>
                       <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Decisions Count:</th>
