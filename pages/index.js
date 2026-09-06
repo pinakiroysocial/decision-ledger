@@ -1149,34 +1149,34 @@ export default function Home() {
                           <span>✓</span>
                           <span>Decision successfully recorded to Firestore!</span>
                         </div>
-                        <table className="table table-sm table-borderless small mb-0 w95-table-fixed" style={{ width: "100%", tableLayout: "fixed", fontSize: 13 }}>
-                          <tbody>
-                            <tr>
-                              <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Title:</th>
-                              <td className="font-weight-bold" style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>{logResult.title}</td>
-                            </tr>
-                            <tr>
-                              <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Chosen Option:</th>
-                              <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>{logResult.chosen_option}</td>
-                            </tr>
-                            <tr>
-                              <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Options Considered:</th>
-                              <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>{logResult.options_considered ? logResult.options_considered.join(", ") : "N/A"}</td>
-                            </tr>
-                            <tr>
-                              <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Reasoning:</th>
-                              <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>{logResult.reasoning}</td>
-                            </tr>
-                            <tr>
-                              <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Tags:</th>
-                              <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>
-                                {logResult.tags && logResult.tags.map((t, idx) => (
-                                  <span key={idx} className="w95-tag mr-1">#{t}</span>
-                                ))}
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                        <div className="w95-decision-detail-grid decision-detail-grid">
+                          <div className="w95-decision-detail-row decision-detail-row">
+                            <div className="w95-decision-detail-label decision-detail-label">Title:</div>
+                            <div className="w95-decision-detail-value decision-detail-value font-weight-bold">{logResult.title}</div>
+                          </div>
+                          <div className="w95-decision-detail-row decision-detail-row">
+                            <div className="w95-decision-detail-label decision-detail-label">Chosen Option:</div>
+                            <div className="w95-decision-detail-value decision-detail-value">{logResult.chosen_option}</div>
+                          </div>
+                          <div className="w95-decision-detail-row decision-detail-row">
+                            <div className="w95-decision-detail-label decision-detail-label">Options Considered:</div>
+                            <div className="w95-decision-detail-value decision-detail-value">{logResult.options_considered && logResult.options_considered.length > 0 ? logResult.options_considered.join(", ") : "N/A"}</div>
+                          </div>
+                          <div className="w95-decision-detail-row decision-detail-row">
+                            <div className="w95-decision-detail-label decision-detail-label">Reasoning:</div>
+                            <div className="w95-decision-detail-value decision-detail-value">{logResult.reasoning}</div>
+                          </div>
+                          <div className="w95-decision-detail-row decision-detail-row">
+                            <div className="w95-decision-detail-label decision-detail-label">Tags:</div>
+                            <div className="w95-decision-detail-value decision-detail-value">
+                              {logResult.tags && logResult.tags.length > 0
+                                ? logResult.tags.map((t, idx) => (
+                                    <span key={idx} className="w95-tag mr-1">#{t}</span>
+                                  ))
+                                : "None"}
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     )}
                   </div>
@@ -1490,30 +1490,34 @@ export default function Home() {
                       <span className="small text-muted">Document ID: <code>{selectedDecision.id}</code></span>
                       <button className="w95-btn w95-btn-sm" onClick={() => setSelectedDecision(null)}>Close Preview</button>
                     </div>
-                    <table className="table table-sm table-borderless small mb-0 w95-table-fixed" style={{ width: "100%", tableLayout: "fixed", fontSize: 13 }}>
-                      <tbody>
-                        <tr>
-                          <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Chosen Option:</th>
-                          <td className="font-weight-bold" style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>{selectedDecision.chosen_option}</td>
-                        </tr>
-                        <tr>
-                          <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Considered:</th>
-                          <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>{selectedDecision.options_considered ? selectedDecision.options_considered.join(", ") : "N/A"}</td>
-                        </tr>
-                        <tr>
-                          <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Reasoning:</th>
-                          <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>{selectedDecision.reasoning}</td>
-                        </tr>
-                        <tr>
-                          <th style={{ width: 140, verticalAlign: "top", whiteSpace: "nowrap", paddingRight: 10 }}>Tags:</th>
-                          <td style={{ wordBreak: "break-word", overflowWrap: "anywhere", wordWrap: "break-word", whiteSpace: "normal", verticalAlign: "top" }}>
-                            {selectedDecision.tags && selectedDecision.tags.map((t, idx) => (
-                              <span key={idx} className="w95-tag mr-1">#{t}</span>
-                            ))}
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <div className="w95-decision-detail-grid decision-detail-grid">
+                      <div className="w95-decision-detail-row decision-detail-row">
+                        <div className="w95-decision-detail-label decision-detail-label">Chosen Option:</div>
+                        <div className="w95-decision-detail-value decision-detail-value font-weight-bold">{selectedDecision.chosen_option}</div>
+                      </div>
+                      <div className="w95-decision-detail-row decision-detail-row">
+                        <div className="w95-decision-detail-label decision-detail-label">Options Considered:</div>
+                        <div className="w95-decision-detail-value decision-detail-value">
+                          {selectedDecision.options_considered && selectedDecision.options_considered.length > 0
+                            ? selectedDecision.options_considered.join(", ")
+                            : "N/A"}
+                        </div>
+                      </div>
+                      <div className="w95-decision-detail-row decision-detail-row">
+                        <div className="w95-decision-detail-label decision-detail-label">Reasoning:</div>
+                        <div className="w95-decision-detail-value decision-detail-value">{selectedDecision.reasoning}</div>
+                      </div>
+                      <div className="w95-decision-detail-row decision-detail-row">
+                        <div className="w95-decision-detail-label decision-detail-label">Tags:</div>
+                        <div className="w95-decision-detail-value decision-detail-value">
+                          {selectedDecision.tags && selectedDecision.tags.length > 0
+                            ? selectedDecision.tags.map((t, idx) => (
+                                <span key={idx} className="w95-tag mr-1">#{t}</span>
+                              ))
+                            : "None"}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>

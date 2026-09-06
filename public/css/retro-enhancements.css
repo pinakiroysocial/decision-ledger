@@ -569,6 +569,64 @@ body, html, #__next {
 }
 
 /* ==========================================================================
+   Decision Detail Card (Two-Column Grid Layout)
+   ========================================================================== */
+
+.w95-decision-detail-grid,
+.decision-detail-grid {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  row-gap: 14px;
+  column-gap: 12px;
+  align-items: start;
+  width: 100%;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.w95-decision-detail-row,
+.decision-detail-row {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  column-gap: 12px;
+  align-items: start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.w95-decision-detail-label,
+.decision-detail-label {
+  width: 160px;
+  min-width: 160px;
+  max-width: 160px;
+  font-weight: bold;
+  color: #000;
+  white-space: nowrap;
+  padding-right: 8px;
+  box-sizing: border-box;
+  user-select: none;
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.w95-decision-detail-value,
+.decision-detail-value {
+  min-width: 0;
+  width: 100%;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
+  white-space: normal;
+  box-sizing: border-box;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #222;
+  margin: 0;
+}
+
+/* ==========================================================================
    Systemic Button Architecture (Windows 95 Authentic Sizing & Padding)
    ========================================================================== */
 
